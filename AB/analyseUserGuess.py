@@ -1,13 +1,20 @@
 def analyse (answer, guess) :
-  result = ''
+  result = ""
   A = 0
   B = 0
   if guess == 'help':
     return answer
   else:
+    # "apple" => list: ["a", "p", "p", "l", "e"]
     answer = list(answer)
     guess = list(guess)
-    for index, char in enumerate(guess):
+    # enumerate() => index, char
+    # if no enumerate() => 就沒有 index
+    for index, char in enumerate(guess): # A
+      # index: 0,
+      # char: "a"
+      # answer: 1234
+      # guess: 0199
       try:
         position = answer.index(char)
         if position == index:
@@ -15,7 +22,7 @@ def analyse (answer, guess) :
           answer[index] = 'x'
       except:
         pass
-    for index, char in enumerate(guess):
+    for index, char in enumerate(guess): # B
       try:
         position = answer.index(char)
         if position != index:
