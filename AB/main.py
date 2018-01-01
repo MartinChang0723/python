@@ -4,6 +4,7 @@ import userGuess
 
 # 程式進入點
 def main () :
+  # 產生四位數答案
   target = generate4Digits.generate4Digit()
   # printInfo.info()
   # print(target)
