@@ -9,7 +9,10 @@ r.encoding = "UTF-8"
 
 s = BeautifulSoup(r.text, "lxml")
 
-tables = s.find_all("div", class_="itemContent")
+# name :  #itemContent > table > tbody > tr:nth-child(1) > td:nth-child(3) > a > font
+# email : #itemContent > table > tbody > tr:nth-child(5) > td:nth-child(2) > a
+
+tables = s.find_all("div", id="itemContent")
 
 for t in tables:
   name = t.find_all("tr")[0].find_all("td")[2].find("a").find("font").string
