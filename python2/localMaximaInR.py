@@ -15,22 +15,29 @@ def isLocalMaximaInR(aList, index, r=1):
         break
     except:
       pass
-  print (result)
   return result
 
 def main ():
+  r = 2
   f = open("tsms.csv","r")
   priceList = []
+  dateList = []
   for line in f:
     strList = line.split('\",\"')
-    priceList.append(strList[6])
+    dateList.append(strList[0].replace('\"', ''))
+    priceList.append(strList[6].replace('\"', ''))
   f.close()
   # print(priceList)
   maximaList = []
   for i in range(1, len(priceList) - 1):
-    if isLocalMaxima(priceList, i):
-      maximaList.append(priceList[i])
-  print(maximaList)
-  
+    if isLocalMaximaInR(priceList, i, r):
+      result = dateList[i] + '\t'
+      for j in range(1, r + 1):
+        result += (str(priceList[i-j]) + '\t')
+      result += str(priceList[i]) + '\t'
+      for j in range(1, r + 1):
+        result += (str(priceList[i+j]) + '\t')
+      print(result)
+
 if __name__ == "__main__":
   main()
