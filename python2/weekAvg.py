@@ -35,6 +35,7 @@ for line in f:
 for index, su in enumerate(sumReturns):
   result.append(su / cntReturns[index])
 
+print(result)
 data = pandas.Series(result, index=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])
 data.plot()
 import matplotlib.pyplot as plt
